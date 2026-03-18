@@ -2674,7 +2674,10 @@ s32 MoveGetTarget(s32 battlerId, enum Move moveId, struct MoveContext *ctx, u32 
         else if (moveTarget == TARGET_SELECTED || moveTarget == TARGET_SMART || moveTarget == TARGET_OPPONENT)
         {
             // In AI Doubles not specified target allows any target for EXPECT_MOVE.
-            if (GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES)
+            if (GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES
+             && GetBattleTest()->type != BATTLE_TEST_AI_MULTI
+             && GetBattleTest()->type != BATTLE_TEST_AI_TWO_VS_ONE
+             && GetBattleTest()->type != BATTLE_TEST_AI_ONE_VS_TWO)
             {
                 INVALID_IF(STATE->battlersCount > 2, "%S requires explicit target", GetMoveName(moveId));
             }
@@ -2695,7 +2698,10 @@ s32 MoveGetTarget(s32 battlerId, enum Move moveId, struct MoveContext *ctx, u32 
         else
         {
             // In AI Doubles not specified target allows any target for EXPECT_MOVE.
-            if (GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES)
+            if (GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES
+             && GetBattleTest()->type != BATTLE_TEST_AI_MULTI
+             && GetBattleTest()->type != BATTLE_TEST_AI_TWO_VS_ONE
+             && GetBattleTest()->type != BATTLE_TEST_AI_ONE_VS_TWO)
             {
                 INVALID("%S requires explicit target", GetMoveName(moveId));
             }
