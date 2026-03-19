@@ -247,7 +247,6 @@ static bool32 IsAITest(void)
 
 static bool32 IsAIDoublesTest(void)
 {
-    
     return (IsAITest() && (GetBattleTest()->type != BATTLE_TEST_AI_SINGLES));
 }
 
@@ -3125,8 +3124,7 @@ void UseItem(u32 sourceLine, struct BattlePokemon *battler, struct ItemContext c
     bool32 requirePartyIndex = ctxItemType == ITEM_USE_PARTY_MENU
                             || ctxItemType == ITEM_USE_PARTY_MENU_MOVES
                             || (ctxItemType == ITEM_USE_BATTLER
-                                 && GetBattleTest()->type != BATTLE_TEST_AI_DOUBLES
-                                 && GetBattleTest()->type != BATTLE_TEST_AI_ONE_VS_TWO
+                                 && !IsAIDoublesTest()
                                  && STATE->battlersCount > 2);
     // Check general bad use.
     INVALID_IF(DATA.turnState == TURN_CLOSED, "USE_ITEM outside TURN");
